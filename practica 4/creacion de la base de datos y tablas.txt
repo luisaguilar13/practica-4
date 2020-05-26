@@ -1,0 +1,149 @@
+
+Setting environment for using XAMPP for Windows.
+HP@USUARIO c:\xampp
+# mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 22
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++---------------------+
+| Database            |
++---------------------+
+| aguilar             |
+| aguilar10901865     |
+| bd_agenda           |
+| bd_aguilar_10901865 |
+| information_schema  |
+| mysql               |
+| paucar9206102       |
+| performance_schema  |
+| phpmyadmin          |
+| test                |
++---------------------+
+10 rows in set (0.00 sec)
+
+MariaDB [(none)]> create database bd_salud character set utf8 collate utf8_gener
+al_ci;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++---------------------+
+| Database            |
++---------------------+
+| aguilar             |
+| aguilar10901865     |
+| bd_agenda           |
+| bd_aguilar_10901865 |
+| bd_salud            |
+| information_schema  |
+| mysql               |
+| paucar9206102       |
+| performance_schema  |
+| phpmyadmin          |
+| test                |
++---------------------+
+11 rows in set (0.00 sec)
+
+MariaDB [(none)]> use bd_salud;
+Database changed
+MariaDB [bd_salud]> show tables,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that
+corresponds to your MariaDB server version for the right syntax to use near '' a
+t line 1
+MariaDB [bd_salud]> show tables;
+Empty set (0.00 sec)
+
+MariaDB [bd_salud]> create table post(
+    -> id int(11) unsigned auto_increment primary key,
+    -> autor varchar(50) not null,
+    -> fecha varchar(20) not null,
+    -> titulo varchar(50) not null,
+    -> contenido varchar(900) not null
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+MariaDB [bd_salud]> show tables;
++--------------------+
+| Tables_in_bd_salud |
++--------------------+
+| post               |
++--------------------+
+1 row in set (0.02 sec)
+
+MariaDB [bd_salud]> insert into post (autor, fecha, titulo, contenido) values ('
+Administrador','10/05/2020','Modelo computacional que puso al mundo en cuarenten
+a','Auto edicion y editores de paginas web usan el Lorem Ipsum como su texto por
+ defecto, y al hacer una busqueda de "Lorem Ipsum" va a dar por resultado muchos
+ sitios web que usan este texto si se encuentran en estado de desarrollo');
+Query OK, 1 row affected, 1 warning (0.07 sec)
+
+MariaDB [bd_salud]> insert into post (autor, fecha, titulo, contenido) values ('
+Administrador','08/05/2020','Como adelgazar mejorando tu sistema digestivo','Es
+un hecho establecido qu uno mejora su sistema digestivo comiendo saludable y que
+ mejor acompañado de un buen habito de realizar ejercicios que mejoren su salud
+, hoy en dia hay  muchos alimentos que pueden ayudar bastante para que usted pue
+da adelgazar');
+Query OK, 1 row affected (0.05 sec)
+
+MariaDB [bd_salud]> select * from post;
++----+---------------+------------+---------------------------------------------
+-------+------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-------------------------+
+| id | autor         | fecha      | titulo
+       | contenido
+
+
+                         |
++----+---------------+------------+---------------------------------------------
+-------+------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-------------------------+
+|  1 | Administrador | 10/05/2020 | Modelo computacional que puso al mundo en cu
+arente | Auto edicion y editores de paginas web usan el Lorem Ipsum como su text
+o por defecto, y al hacer una busqueda de "Lorem Ipsum" va a dar por resultado m
+uchos sitios web que usan este texto si se encuentran en estado de desarrollo
+                         |
+|  2 | Administrador | 08/05/2020 | Como adelgazar mejorando tu sistema digestiv
+o      | Es un hecho establecido qu uno mejora su sistema digestivo comiendo sal
+udable y que mejor acompañado de un buen habito de realizar ejercicios que mejor
+en su salud , hoy en dia hay  muchos alimentos que pueden ayudar bastante para q
+ue usted pueda adelgazar |
++----+---------------+------------+---------------------------------------------
+-------+------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-------------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [bd_salud]> create table usuarios(
+    -> id int(11) unsigned auto_increment primary key,
+    -> usuario varchar(100) not null,
+    -> password varchar(100) not null
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+MariaDB [bd_salud]> select * from usuarios;
+Empty set (0.05 sec)
+
+MariaDB [bd_salud]> insert into usuarios (usuario, password) values ('Administra
+dor','123456');
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [bd_salud]> select* from usuarios;
++----+---------------+----------+
+| id | usuario       | password |
++----+---------------+----------+
+|  1 | Administrador | 123456   |
++----+---------------+----------+
+1 row in set (0.00 sec)
+
+MariaDB [bd_salud]>
